@@ -1,11 +1,8 @@
-@extends('layouts.app')
-
 @section('template_title')
     {{ $address->name ?? __('Show') . " " . __('Address') }}
 @endsection
 
-@section('content')
-    <section class="content container-fluid">
+<x-app-layout  class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -19,7 +16,7 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
+
                         <div class="form-group mb-2 mb20">
                             <strong>Cliente Id:</strong>
                             {{ $address->cliente_id }}
@@ -53,5 +50,4 @@
                 </div>
             </div>
         </div>
-    </section>
-@endsection
+    </x-app-layout>

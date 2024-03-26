@@ -1,11 +1,9 @@
-@extends('layouts.app')
 
 @section('template_title')
     Company
 @endsection
 
-@section('content')
-    <div class="container-fluid">
+    <x-app-layout class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -35,7 +33,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Cliente Id</th>
 										<th>Name</th>
 										<th>Catchphrase</th>
@@ -48,7 +46,7 @@
                                     @foreach ($companies as $company)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $company->cliente_id }}</td>
 											<td>{{ $company->name }}</td>
 											<td>{{ $company->catchPhrase }}</td>
@@ -73,5 +71,4 @@
                 {!! $companies->links() !!}
             </div>
         </div>
-    </div>
-@endsection
+    </x-app-layout>
