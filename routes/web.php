@@ -21,6 +21,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('clientes', ClienteController::class);
     Route::get('clientes', [ClienteController::class, 'index'])->name('clientes');
 
+    // Dirección
+    Route::resource('addresses', AddressController::class);
+    Route::get('addresses', [AddressController::class, 'index'])->name('addresses');
+
+    // Compañias
+    Route::resource('companies', CompanyController::class);
+    Route::get('companies', [CompanyController::class, 'index'])->name('companies');
 });
 
 

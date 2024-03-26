@@ -1,5 +1,10 @@
 <x-app-layout>
     <section class="content container-fluid">
+        <header class="p-4 bg-white dark:bg-gray-800 shadow mb-12">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Clientes') }}
+            </h2>
+        </header>
         <div class="">
             <div class="col-md-12">
 

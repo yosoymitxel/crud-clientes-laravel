@@ -1,10 +1,11 @@
-<x-app-layout>
-    <div class="container-fluid w-100">
-        <header class="p-4 bg-white dark:bg-gray-800 shadow mb-12">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Clientes') }}
-            </h2>
-        </header>
+@extends('layouts.app')
+
+@section('template_title')
+    Address
+@endsection
+
+@section('content')
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -12,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Cliente') }}
+                                {{ __('Address') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('clientes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('addresses.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -34,31 +35,35 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-
-										<th>Name</th>
-										<th>Username</th>
-										<th>Email</th>
-										<th>Phone</th>
-										<th>Website</th>
+                                        
+										<th>Cliente Id</th>
+										<th>Street</th>
+										<th>Suite</th>
+										<th>City</th>
+										<th>Zipcode</th>
+										<th>Lat</th>
+										<th>Lng</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($clientes as $cliente)
+                                    @foreach ($addresses as $address)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-
-											<td>{{ $cliente->name }}</td>
-											<td>{{ $cliente->username }}</td>
-											<td>{{ $cliente->email }}</td>
-											<td>{{ $cliente->phone }}</td>
-											<td>{{ $cliente->website }}</td>
+                                            
+											<td>{{ $address->cliente_id }}</td>
+											<td>{{ $address->street }}</td>
+											<td>{{ $address->suite }}</td>
+											<td>{{ $address->city }}</td>
+											<td>{{ $address->zipcode }}</td>
+											<td>{{ $address->lat }}</td>
+											<td>{{ $address->lng }}</td>
 
                                             <td>
-                                                <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('clientes.show',$cliente->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('clientes.edit',$cliente->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('addresses.destroy',$address->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('addresses.show',$address->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('addresses.edit',$address->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -71,9 +76,8 @@
                         </div>
                     </div>
                 </div>
-                {!! $clientes->links() !!}
+                {!! $addresses->links() !!}
             </div>
         </div>
     </div>
-</x-app-layout>
-
+@endsection
