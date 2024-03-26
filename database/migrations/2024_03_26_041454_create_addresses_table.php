@@ -17,13 +17,17 @@ class CreateAddressesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('cliente_id');
             $table->string('street');
-            $table->string('suite')->nullable();
+            $table->string('suite')->nullable();  // Allow null values for suite
             $table->string('city');
             $table->string('zipcode');
+            // Add new columns for geo data:
+            $table->decimal('lat', 10, 6)->nullable();  // Latitude with precision
+            $table->decimal('lng', 10, 6)->nullable();  // Longitude with precision
             $table->timestamps();
 
             $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
         });
+
     }
 
     /**
