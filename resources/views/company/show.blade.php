@@ -11,7 +11,7 @@
                             <span class="card-title">{{ __('Show') }} Company</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('companies.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ route('companies.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
@@ -19,10 +19,10 @@
 
                         <div class="form-group mb-2 mb20">
                             <strong>Cliente Id:</strong>
-                            {{ $company->cliente_id }}
+                            {{ $company->id }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $company->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
