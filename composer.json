@@ -12,7 +12,6 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "laraveles/spanish": "^1.5",
-        "lummy/laravel-vue-api-crud-generator": "*",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
