@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Http\Requests\ClienteRequest;
+use Inertia\Inertia;
 
 /**
  * Class ClienteController
@@ -16,10 +17,12 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::paginate();
+        $clientes = Cliente::get();
 
-        return view('cliente.index', compact('clientes'))
-            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
+        /*return view('cliente.index', compact('clientes'))
+            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());*/
+        //return Inertia::render('Clientes/Index', compact('clientes'))->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
+        return Inertia::render('Clientes/Index', compact('clientes'));
     }
 
     /**
