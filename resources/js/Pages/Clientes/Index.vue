@@ -13,16 +13,39 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <tr v-for="(cliente, i) in clientes" :key="i">
-                        <td>{{ ++i }}</td>
+                    <div class="card-body bg-white">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
+                                <tr>
+                                    <th>No</th>
 
-                        <td>{{ cliente.name }}</td>
-                        <td>{{ cliente.username }}</td>
-                        <td>{{ cliente.email }}</td>
-                        <td>{{ cliente.phone }}</td>
-                        <td>{{ cliente.website }}</td>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Website</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(cliente, i) in clientes" :key="i">
+                                    <td>{{ ++i }}</td>
 
-                    </tr>
+                                    <td>{{ cliente.name }}</td>
+                                    <td>{{ cliente.username }}</td>
+                                    <td>{{ cliente.email }}</td>
+                                    <td>{{ cliente.phone }}</td>
+                                    <td>{{ cliente.website }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary " :href="route('clientes.show',cliente.id)"><i class="fa fa-fw fa-eye"></i> {{ ('Show') }}</a>
+                                        <a class="btn btn-sm btn-success" :href="route('clientes.edit',cliente.id)"><i class="fa fa-fw fa-edit"></i> {{ ('Edit') }}</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
