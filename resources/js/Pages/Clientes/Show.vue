@@ -23,6 +23,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                         <span class="card-title">{{ ('Datos del Cliente No: '+cliente.id) }} </span>
                                     </div>
                                     <div class="float-right">
+                                        <router-link :to="{name: 'edit', params: { id: cliente.id }}" class="btn btn-success">Edit</router-link>
                                         <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
                                     </div>
                                 </div>

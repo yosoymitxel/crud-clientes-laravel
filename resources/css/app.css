@@ -5,3 +5,92 @@
 [x-cloak] {
     display: none;
 }
+
+.table{
+    padding: 0.2px;
+    width: 100%;
+}
+
+.card,.card-body{
+    padding: 1em;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    min-height: 0.01%; /* Fix for IE8 bootstrap documentation */
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        border-radius: 0.25rem;
+        overflow-y: hidden;
+        -ms-overflow-style: -webkit-scrollbar-overflow; /* IE10-11 only */
+        overflow-x: auto;
+    }
+
+    .table-responsive .table {
+        border-collapse: collapse;
+    }
+
+    .table-responsive .table-bordered {
+        border-top: 0;
+    }
+
+    .table-responsive .table-bordered td,
+    .table-responsive .table-bordered th {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-responsive .table-bordered thead td,
+    .table-responsive .table-bordered thead th {
+        border-bottom-width: 2px;
+    }
+
+    .table-responsive .table-striped > tbody > tr:nth-child(odd) > td,
+    .table-responsive .table-striped > tbody > tr:nth-child(odd) > th {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .table-responsive .table-hover > tbody > tr:hover > td,
+    .table-responsive .table-hover > tbody > tr:hover > th {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+
+    .table-responsive .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table-responsive .table-size-sm > tbody > tr > td,
+    .table-responsive .table-size-sm > tbody > tr > th {
+        padding: 0.25rem 0.5rem;
+        border-width: 1px;
+    }
+
+    .table-responsive .table-size-sm > thead > tr > th {
+        padding: 0.25rem 0.5rem;
+        border-width: 1px;
+    }
+
+    .table-responsive .table-size-lg > tbody > tr > td,
+    .table-responsive .table-size-lg > tbody > tr > th {
+        padding: 0.75rem 1.5rem;
+        border-width: 1px;
+    }
+
+    .table-responsive .table-size-lg > thead > tr > th {
+        padding: 0.75rem 1.5rem;
+        border-width: 1px;
+    }
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
