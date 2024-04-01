@@ -95,24 +95,35 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     </AppLayout>
 </template>
 <script>
-
-
     export default {
         components: {
             AppLayout
 
         },
         props:{
-            cliente: Object,
-        },
-        data(){
-            return{
-                name        = this.cliente.name,
-                username    = this.cliente.username,
-                email       = this.cliente.email,
-                phone       = this.cliente.phone,
-                website     = this.cliente.website
-            }
+            cliente: Object
+        }
+    }
+
+
+    const handleUpdate = async (CONTACT) => {
+
+        try{
+            const response = await axios.post(`http://localhost:8000/api/update_contact/${route.params.id}`,
+                {
+                    name: contact.name,
+                    email: contact.email,
+                    job_title: contact.job_title,
+                    contact_no: contact.contact_no
+                })
+                .then((response) => {
+                    console.log(response)
+                    // console.log(editName.value)
+                })
+                .then(() => router.push({ name: 'home'}))
+        }
+        catch(err){
+            error.value = err.message
         }
     }
 </script>
