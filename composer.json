@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.9",
         "laraveles/spanish": "^1.5",
         "lomkit/laravel-rest-api": "^2.6",
+        "realrashid/sweet-alert": "^7.1",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {

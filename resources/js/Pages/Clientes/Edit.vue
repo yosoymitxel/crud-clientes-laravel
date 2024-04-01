@@ -28,64 +28,41 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                 </div>
 
                                 <div class="row padding-1 p-1">
-                                    <div class="col-md-12">
 
-                                        <div class="form-group mb-2 mb20">
-                                            <label for="name" class="form-label">{{ ('Name') }}</label>
-                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $cliente?->name) }}" id="name" placeholder="Name">
-                                            {!! $errors->first('name', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                                        </div>
-                                        <div class="form-group mb-2 mb20">
-                                            <label for="username" class="form-label">{{ ('Username') }}</label>
-                                            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $cliente?->username) }}" id="username" placeholder="Username">
-                                            {!! $errors->first('username', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                                        </div>
-                                        <div class="form-group mb-2 mb20">
-                                            <label for="email" class="form-label">{{ ('Email') }}</label>
-                                            <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $cliente?->email) }}" id="email" placeholder="Email">
-                                            {!! $errors->first('email', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                                        </div>
-                                        <div class="form-group mb-2 mb20">
-                                            <label for="phone" class="form-label">{{ ('Phone') }}</label>
-                                            <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone', $cliente?->phone) }}" id="phone" placeholder="Phone">
-                                            {!! $errors->first('phone', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                                        </div>
-                                        <div class="form-group mb-2 mb20">
-                                            <label for="website" class="form-label">{{ ('Website') }}</label>
-                                            <input type="text" name="website" class="form-control @error('website') is-invalid @enderror" value="{{ old('website', $cliente?->website) }}" id="website" placeholder="Website">
-                                            {!! $errors->first('website', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+                                    <form @submit="onSubmit" method="POST" class="flex flex-col gap-4 p-4">
+
+                                        <h2 class="text-2xl font-bold">Editar Cliente</h2>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="name" class="font-medium">Nombre:</label>
+                                            <input type="text" name="name" id="name" v-model="cliente.name" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
-                                    </div>
-                                    <div class="col-md-12 mt20 mt-2">
-                                        <button type="submit" class="btn btn-primary">{{ ('Guardar') }}</button>
-                                    </div>
+                                        <div class="flex flex-col gap-2">
+                                            <label for="username" class="font-medium">Nombre de usuario:</label>
+                                            <input type="text" name="username" id="username" v-model="cliente.username" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="email" class="font-medium">Correo electrónico:</label>
+                                            <input type="email" name="email" id="email" v-model="cliente.email" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="phone" class="font-medium">Teléfono:</label>
+                                            <input type="text" name="phone" id="phone" v-model="cliente.phone" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="website" class="font-medium">Sitio web:</label>
+                                            <input type="text" name="website" id="website" v-model="cliente.website" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Actualizar</button>
+                                    </form>
                                 </div>
 
-                                <div class="card-body bg-white">
-
-                                    <div class="form-group mb-2 mb20">
-                                        <strong>Nombre:</strong>
-                                        {{ cliente.name }}
-                                    </div>
-                                    <div class="form-group mb-2 mb20">
-                                        <strong>Username:</strong>
-                                        {{ cliente.username }}
-                                    </div>
-                                    <div class="form-group mb-2 mb20">
-                                        <strong>Email:</strong>
-                                        {{ cliente.email }}
-                                    </div>
-                                    <div class="form-group mb-2 mb20">
-                                        <strong>Teléfono:</strong>
-                                        {{ cliente.phone }}
-                                    </div>
-                                    <div class="form-group mb-2 mb20">
-                                        <strong>Web:</strong>
-                                        {{ cliente.website }}
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -95,6 +72,9 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     </AppLayout>
 </template>
 <script>
+
+
+
     export default {
         components: {
             AppLayout
@@ -102,28 +82,71 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         },
         props:{
             cliente: Object
-        }
-    }
+        },
+        data() {
+            return {
+                name: '{{ cliente.name }}',
+                username: '{{ cliente.username }}',
+                email: '{{ cliente.email }}',
+                phone: '{{ cliente.phone }}',
+                website: '{{ cliente.website }}',
+            }
+        },
 
+        methods: {
+            onSubmit(e) {
+                e.preventDefault();
 
-    const handleUpdate = async (CONTACT) => {
+                // Enviar datos al servidor para actualizar el cliente
+                // ...
 
-        try{
-            const response = await axios.post(`http://localhost:8000/api/update_contact/${route.params.id}`,
-                {
-                    name: contact.name,
-                    email: contact.email,
-                    job_title: contact.job_title,
-                    contact_no: contact.contact_no
-                })
-                .then((response) => {
-                    console.log(response)
-                    // console.log(editName.value)
-                })
-                .then(() => router.push({ name: 'home'}))
-        }
-        catch(err){
-            error.value = err.message
+                // Actualizar la lista de clientes localmente
+                // ...
+                let id = this.cliente.id;
+                console.log(this.$router)
+                try{
+                    const response =  axios.put(`${window.location.href.split("//")[0]}/api/clientes/${ id }`,
+                        {
+                            name: this.cliente.name,
+                            username: this.cliente.username,
+                            email: this.cliente.email,
+                            phone: this.cliente.phone,
+                            website: this.cliente.website,
+                        })
+                        .then((response) => {
+                            // Validate response as JSON
+                            if (typeof response.data !== 'object' || response.data === null) {
+                                console.error('Error: Invalid JSON response received.');
+                                // Handle invalid JSON appropriately (e.g., show error message to user)
+                                return; // Exit the function if response is not valid JSON
+                            }
+
+                            // Extract status and data
+                            const status = response.status;
+                            const data = response.data;
+
+                            console.log('Status:', status);
+                            console.log('Data:', data);
+
+                            // Handle success or error based on status code
+                            if (status >= 200 && status < 300) {
+                                // Success! Data contains the updated cliente information
+                                // ... (use the data for further processing)
+                                console.log('Se ha modificado')
+                            } else {
+                                // Error handling for non-2xx status codes
+                                console.error(`Error: API request failed with status ${status}`);
+                                // Handle API errors appropriately (e.g., show error message to user)
+                            }
+                        })
+                        //.then(() => router.push({ name: 'home'}))
+                }
+                catch(err){
+                    //error.value = err.message
+                    console.log(err.message)
+                }
+            }
+
         }
     }
 </script>
