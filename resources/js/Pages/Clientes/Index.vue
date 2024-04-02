@@ -11,9 +11,24 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         </template>
 
         <div class="py-12">
+
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="card-body bg-white">
+                        <div class="card-header flex justify-content-between align-items-center mb-4" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div class="float-left">
+                                <h2 class="text-2xl font-bold">Informe Cliente</h2>
+                            </div>
+                            <div class="float-right">
+                                <a class="bg-green-500 text-white rounded-md shadow-md p-2 text-sm font-medium mr-4" :href="route('clientes.index')">
+                                    Obtener de API
+                                </a>
+                                <a class="bg-blue-500 text-white rounded-md shadow-md p-2 text-sm font-medium" :href="route('clientes.create')">
+                                    Nuevo
+                                </a>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">

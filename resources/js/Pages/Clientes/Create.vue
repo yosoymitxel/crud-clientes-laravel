@@ -6,7 +6,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Detalle de un Cliente
+                Nuevo Cliente
             </h2>
         </template>
 
@@ -16,21 +16,18 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-
-
                                 <div class="row padding-1 p-1">
-
                                     <form @submit="onSubmit" method="POST" class="flex flex-col gap-4 p-4">
                                         <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                                             <div class="float-left">
-                                                <span class="card-title">{{ ('Modificar datos del Cliente No: '+cliente.id) }} </span>
+                                                <span class="card-title">{{ ('Crear Cliente') }} </span>
                                             </div>
                                             <div class="float-right">
                                                 <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
                                             </div>
-                                        </div>
-                                        <h2 class="text-2xl font-bold">Editar Cliente</h2>
 
+                                        </div>
+                                        <h2 class="text-2xl font-bold">Crear Cliente</h2>
                                         <div class="flex flex-col gap-2">
                                             <label for="name" class="font-medium">Nombre:</label>
                                             <input type="text" name="name" id="name" v-model="cliente.name" required class="border border-gray-300 rounded-md p-2">
@@ -56,7 +53,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                             <input type="text" name="website" id="website" v-model="cliente.website" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
-                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Actualizar</button>
+                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Agregar</button>
                                     </form>
                                 </div>
 
@@ -106,6 +103,13 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         },
         data() {
             return {
+                cliente: {
+                    name: '',
+                    username: '',
+                    email: '',
+                    phone: '',
+                    website: '',
+                },
                 showComponent: false,
                 mensajeModal: '',
                 tituloModal: ''
@@ -121,10 +125,15 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 
                 // Actualizar la lista de clientes localmente
                 // ...
-                let id = this.cliente.id;
-                console.log(this.$router)
+                console.log({
+                    name: this.cliente.name,
+                    username: this.cliente.username,
+                    email: this.cliente.email,
+                    phone: this.cliente.phone,
+                    website: this.cliente.website,
+                })
                 try{
-                    const response =  axios.put(`${window.location.href.split("//")[0]}/api/clientes/${ id }`,
+                    const response =  axios.post(`${window.location.href.split("//")[0]}/api/clientes/`,
                         {
                             name: this.cliente.name,
                             username: this.cliente.username,

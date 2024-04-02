@@ -31,7 +31,8 @@ class ClienteController extends Controller
     public function create()
     {
         $cliente = new Cliente();
-        return view('cliente.create', compact('cliente'));
+        return Inertia::render('Clientes/Create', compact('cliente'));
+        //return view('cliente.create', compact('cliente'));
     }
 
     /**
