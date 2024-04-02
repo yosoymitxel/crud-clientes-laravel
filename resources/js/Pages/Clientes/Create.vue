@@ -90,9 +90,6 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     </AppLayout>
 </template>
 <script>
-
-
-
     export default {
         components: {
             AppLayout
@@ -201,5 +198,4 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         }
 
     }
-
 </script>
