@@ -6,7 +6,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Importar Clientes desde API
+                Import From API
             </h2>
         </template>
         <div class="py-12">
@@ -17,7 +17,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                             <div class="card">
                                 <div class="card-header flex justify-between items-center mb-4">
                                     <div class="float-left">
-                                            <h2 class="text-2xl font-bold">Importar Clientes desde API</h2>
+                                            <h2 class="text-2xl font-bold">Import From API</h2>
                                     </div>
                                     <div class="float-right">
                                         <a class="btn btn-info" :href="route('clientes.index')"> {{ ('Back') }}</a>
@@ -25,9 +25,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                 </div>
 
                                 <div class="card-body bg-white text-center">
-                                    <h2 class="mb-2">Obtener datos automáticamente...</h2>
                                     <button @click="fetchUsers" class="btn btn-success">
-                                        Agregar desde API
+                                        Get Costumers
                                     </button>
                                 </div>
                             </div>

@@ -21,10 +21,10 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                             </div>
                             <div class="float-right">
                                 <a class="bg-green-500 text-white rounded-md shadow-md p-2 text-sm font-medium mr-4" :href="route('clientes.createapi')">
-                                    Obtener de API
+                                    Get From API
                                 </a>
                                 <a class="bg-blue-500 text-white rounded-md shadow-md p-2 text-sm font-medium" :href="route('clientes.create')">
-                                    Nuevo
+                                    New
                                 </a>
                             </div>
                         </div>
@@ -39,7 +39,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Website</th>
-                                    <th>Detalles</th>
+                                    <th>Details</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -55,25 +55,25 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <td class="text-center">
                                         <button @click="toggleDetails(cliente)"><i class="fa fa-plus"></i></button>
                                         <table v-if="isShowDetails(cliente)">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>Ciudad</th>
-                                                                <th>Calle</th>
-                                                                <th>suite</th>
-                                                                <th>Empresa</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr v-for="address in cliente.address" :key="address.id">
-                                                                <td>{{ address.city }}</td>
-                                                                <td>{{ address.street }}</td>
-                                                                <td>{{ address.suite }}</td>
-                                                                <div v-for="company in cliente.company" :key="company.id">
-                                                                    <td>{{ company.name }}</td>
-                                                                </div>
-                                                            </tr>
-                                                            </tbody>
-                                                </table>
+                                            <thead>
+                                                <tr>
+                                                    <th>City</th>
+                                                    <th>Street</th>
+                                                    <th>Suite</th>
+                                                    <th>Company</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="address in cliente.address" :key="address.id">
+                                                    <td>{{ address.city }}</td>
+                                                    <td>{{ address.street }}</td>
+                                                    <td>{{ address.suite }}</td>
+                                                    <div v-for="company in cliente.company" :key="company.id">
+                                                        <td>{{ company.name }}</td>
+                                                    </div>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </td>
 
                                     <td>

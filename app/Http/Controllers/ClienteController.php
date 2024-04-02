@@ -27,9 +27,6 @@ class ClienteController extends Controller
             $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
         }
 
-        /*return view('cliente.index', compact('clientes'))
-            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());*/
-        //return Inertia::render('Clientes/Index', compact('clientes'))->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
         return Inertia::render('Clientes/Index', compact('clientes'));
     }
 
@@ -61,16 +58,15 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        //return view('cliente.show', compact('cliente'));
+        $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
+        $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->get();
+
         return Inertia::render('Clientes/Show', compact('cliente'));
     }
 
     public function createapi()
     {
-        $cliente = Cliente::get();
-
-        //return view('cliente.show', compact('cliente'));
-        return Inertia::render('Clientes/CreateApi', compact('cliente'));
+        return Inertia::render('Clientes/CreateApi');
     }
 
     /**
@@ -79,6 +75,9 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente = Cliente::find($id);
+
+        $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
+        $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->get();
 
         return Inertia::render('Clientes/Edit', compact('cliente'));
         //return view('cliente.edit', compact('cliente'));
