@@ -20,16 +20,16 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 
                                 <div class="row padding-1 p-1">
 
-                                    <form @submit="onSubmit" method="POST" class="flex flex-col gap-4 p-4">
-                                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <form @submit="onSubmit" method="POST" class="flex flex-col gap-4">
+                                        <div class="card-header flex justify-between items-center mb-4">
                                             <div class="float-left">
-                                                <span class="card-title">{{ ('Modificar datos del Cliente No: '+cliente.id) }} </span>
+                                                <h2 class="text-2xl font-bold">{{ ('Modificar datos del Cliente No: '+cliente.id) }}</h2>
+
                                             </div>
                                             <div class="float-right">
                                                 <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
                                             </div>
                                         </div>
-                                        <h2 class="text-2xl font-bold">Editar Cliente</h2>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="name" class="font-medium">Nombre:</label>

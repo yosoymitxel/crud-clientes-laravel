@@ -17,17 +17,17 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="row padding-1 p-1">
-                                    <form @submit="onSubmit" method="POST" class="flex flex-col gap-4 p-4">
-                                        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <form @submit="onSubmit" method="POST" class="flex flex-col gap-4">
+                                        <div class="card-header flex justify-between items-center mb-4">
                                             <div class="float-left">
-                                                <span class="card-title">{{ ('Crear Cliente') }} </span>
+                                                <h2 class="text-2xl font-bold">Crear Cliente</h2>
                                             </div>
                                             <div class="float-right">
                                                 <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
                                             </div>
 
                                         </div>
-                                        <h2 class="text-2xl font-bold">Crear Cliente</h2>
+
                                         <div class="flex flex-col gap-2">
                                             <label for="name" class="font-medium">Nombre:</label>
                                             <input type="text" name="name" id="name" v-model="cliente.name" required class="border border-gray-300 rounded-md p-2">

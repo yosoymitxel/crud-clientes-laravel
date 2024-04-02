@@ -15,7 +15,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="card bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="card-body bg-white">
-                        <div class="card-header flex justify-content-between align-items-center mb-4" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="card-header flex justify-between items-center mb-4">
                             <div class="float-left">
                                 <h2 class="text-2xl font-bold" >Informe Cliente</h2>
                             </div>
@@ -52,8 +52,8 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <td>{{ cliente.phone }}</td>
                                     <td>{{ cliente.website }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary " :href="route('clientes.show',cliente.id)"><i class="fa fa-fw fa-eye"></i> {{ ('Show') }}</a>
-                                        <a class="btn btn-sm btn-success" :href="route('clientes.edit',cliente.id)"><i class="fa fa-fw fa-edit"></i> {{ ('Edit') }}</a>
+                                        <a class="btn btn-sm btn-info mr-2" :href="route('clientes.show',cliente.id)"><i class="fa fa-fw fa-eye"></i> {{ ('Show') }}</a>
+                                        <a class="btn btn-sm btn-warning" :href="route('clientes.edit',cliente.id)"><i class="fa fa-fw fa-edit"></i> {{ ('Edit') }}</a>
                                     </td>
                                 </tr>
                                 </tbody>

@@ -18,28 +18,19 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                                <div class="card-header flex justify-between items-center mb-4">
                                     <div class="float-left">
-                                        <span class="card-title">{{ ('Datos del Cliente No: '+cliente.id) }} </span>
+                                        <h2 class="text-2xl font-bold">Datos de Cliente</h2>
                                     </div>
                                     <div class="float-right">
-
-                                        <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
+                                        <a class="btn btn-sm btn-warning mr-2" :href="route('clientes.edit',cliente.id)">
+                                            <i class="fa fa-fw fa-edit"></i> {{ ('Edit') }}
+                                        </a>
+                                        <a class="btn btn-info" :href="route('clientes.index')"> {{ ('Back') }}</a>
                                     </div>
                                 </div>
-                                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div class="float-left">
-                                        <span class="card-title">{{ ('Modificar datos del Cliente No: '+cliente.id) }} </span>
-                                    </div>
-                                    <div class="float-right">
-                                        <a class="btn btn-sm btn-success" :href="route('clientes.edit',cliente.id)"><i class="fa fa-fw fa-edit"></i> {{ ('Edit') }}</a>
-                                        <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
-                                    </div>
-                                </div>
-                                <h2 class="text-2xl font-bold">Datos de Cliente</h2>
 
                                 <div class="card-body bg-white">
-
                                     <div class="form-group mb-2 mb20">
                                         <strong>Nombre:</strong>
                                         {{ cliente.name }}
