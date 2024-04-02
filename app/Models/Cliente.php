@@ -23,15 +23,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Cliente extends Model
 {
-    
+
 
     protected $perPage = 20;
 
     /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
+ * Attributes that should be mass-assignable.
+ *
+ * @var array
+ */
     protected $fillable = ['name', 'username', 'email', 'phone', 'website'];
 
 
@@ -42,7 +42,7 @@ class Cliente extends Model
     {
         return $this->hasMany(\App\Models\Address::class, 'id', 'cliente_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -50,6 +50,5 @@ class Cliente extends Model
     {
         return $this->hasMany(\App\Models\Company::class, 'id', 'cliente_id');
     }
-    
 
 }

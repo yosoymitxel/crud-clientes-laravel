@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Address;
 use App\Http\Requests\ClienteRequest;
+use App\Models\Company;
 use Inertia\Inertia;
 
 /**
@@ -18,6 +20,12 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Cliente::get();
+
+        foreach ($clientes as &$cliente) {
+            $cliente->idxd = $cliente->id;
+            $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->get();
+            $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
+        }
 
         /*return view('cliente.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());*/

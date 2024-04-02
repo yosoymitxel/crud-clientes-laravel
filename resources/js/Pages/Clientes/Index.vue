@@ -39,6 +39,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Website</th>
+                                    <th>Detalles</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -51,9 +52,33 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <td>{{ cliente.email }}</td>
                                     <td>{{ cliente.phone }}</td>
                                     <td>{{ cliente.website }}</td>
+                                    <td class="text-center">
+                                        <button @click="toggleDetails(cliente)"><i class="fa fa-plus"></i></button>
+                                        <table v-if="isShowDetails(cliente)">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Ciudad</th>
+                                                                <th>Calle</th>
+                                                                <th>suite</th>
+                                                                <th>Empresa</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr v-for="address in cliente.address" :key="address.id">
+                                                                <td>{{ address.city }}</td>
+                                                                <td>{{ address.street }}</td>
+                                                                <td>{{ address.suite }}</td>
+                                                                <div v-for="company in cliente.company" :key="company.id">
+                                                                    <td>{{ company.name }}</td>
+                                                                </div>
+                                                            </tr>
+                                                            </tbody>
+                                                </table>
+                                    </td>
+
                                     <td>
-                                        <a class="btn btn-sm btn-info mr-2" :href="route('clientes.show',cliente.id)"><i class="fa fa-fw fa-eye"></i> {{ ('Show') }}</a>
-                                        <a class="btn btn-sm btn-warning" :href="route('clientes.edit',cliente.id)"><i class="fa fa-fw fa-edit"></i> {{ ('Edit') }}</a>
+                                        <a class="btn btn-sm btn-info mr-2 mb-2" :href="route('clientes.show',cliente.id)"><i class="fa fa-fw fa-eye"></i> {{ ('Show') }}</a>
+                                        <a class="btn btn-sm btn-warning px-4" :href="route('clientes.edit',cliente.id)"><i class="fa fa-fw fa-edit"></i> {{ ('Edit ') }}</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -73,8 +98,22 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             AppLayout
 
         },
+        data() {
+            return {
+                expandedDetails: {},
+            };
+        },
         props:{
             clientes: Array,
-        }
+        },
+        methods: {
+            toggleDetails(cliente, type = 'address') {
+                this.expandedDetails[cliente.id] = this.expandedDetails[cliente.id] || {};
+                this.expandedDetails[cliente.id][type] = !this.expandedDetails[cliente.id][type];
+            },
+            isShowDetails(cliente, type = 'address') {
+                return this.expandedDetails[cliente.id] && this.expandedDetails[cliente.id][type];
+            },
+        },
     }
 </script>

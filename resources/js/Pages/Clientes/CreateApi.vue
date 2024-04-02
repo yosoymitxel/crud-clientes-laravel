@@ -20,7 +20,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                 </div>
 
                                 <div class="card-body bg-white text-center">
-                                    <p>Obteniendo datos automáticamente...</p>
+                                    <h2 class="mb-2">Obtener datos automáticamente...</h2>
                                     <button @click="fetchUsers" class="btn btn-success">
                                         Agregar desde API
                                     </button>
@@ -44,36 +44,49 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         },
         methods: {
             async fetchUsers() {
-                try {
-                    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-                    this.users = response.data;
-                    console.log(response.data)
-                    let successfulInsertions = 0;
-                    let errors = [];
-
-                    for (const user of response.data) {
+                 Swal.fire ({
+                    title: "¿Quieres cargar los datos?",
+                    showCancelButton: true,
+                    confirmButtonText: "Cargar Nuevos Datos",
+                }).then(async (result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
                         try {
-                            const submitResponse = await this.submitUser(user);
-                            successfulInsertions++;
-                        } catch (error) {
-                            errors.push(error);
-                            console.error('Error creating user:', error.response.data);
-                        }
-                    }
+                            const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+                            this.users = response.data;
+                            console.log(response.data)
+                            let successfulInsertions = 0;
+                            let errors = [];
 
-                    // Process is finished
-                    Swal.fire({
-                        title: "Procesado",
-                        text: `Finished processing users. Successfully inserted ${successfulInsertions} users.`,
-                        icon: "question"
-                    });
-                    if (errors.length > 0) {
-                        console.error('Encountered errors during insertion:', errors);
-                        // Handle errors (e.g., display notification to the user)
+                            for (const user of response.data) {
+                                try {
+                                    const submitResponse = await this.submitUser(user);
+                                    successfulInsertions++;
+                                } catch (error) {
+                                    errors.push(error);
+                                    console.error('Error creating user:', error.response.data);
+                                }
+                            }
+
+                            // Process is finished
+                            Swal.fire({
+                                title: "Procesado",
+                                text: `Finished processing users. Successfully inserted ${successfulInsertions} users.`,
+                                icon: "question"
+                            });
+                            if (errors.length > 0) {
+                                console.error('Encountered errors during insertion:', errors);
+                                // Handle errors (e.g., display notification to the user)
+                            }
+                        } catch (error) {
+                            console.error('Error fetching users:', error);
+                        }
+                    } else if (result.isDenied) {
+                        Swal.fire("Changes are not saved", "", "info");
                     }
-                } catch (error) {
-                    console.error('Error fetching users:', error);
-                }
+                });
+
+
             },
 
             async submitUser(user) {
