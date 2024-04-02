@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cliente;
+use App\Models\Company;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,7 +38,32 @@ class ClienteController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $cliente = Cliente::create($request->all());
+        $data = $request->all();
+        $companyData = $data['company'];
+        $addressData = $data['address'];
+
+        // Create Cliente model with nested data relationships
+        $datosCliente = [
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'website' => $data['website'],
+            'website' => $data['website'],
+        ];
+
+        $cliente = Cliente::create($datosCliente);
+
+        if($companyData){
+            $companyData['cliente_id'] = $cliente->id;
+            $datosCliente['company'] = Company::create($companyData); // Create Company
+        }
+
+        if($addressData){
+            $addressData['cliente_id'] = $cliente->id;
+            $datosCliente['address'] = Address::create($addressData); // Create Address
+        }
+
         return response()->json($cliente, 201);
     }
 

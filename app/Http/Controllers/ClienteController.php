@@ -62,7 +62,7 @@ class ClienteController extends Controller
         $cliente = Cliente::get();
 
         //return view('cliente.show', compact('cliente'));
-        return Inertia::render('Clientes/Show', compact('cliente'));
+        return Inertia::render('Clientes/CreateApi', compact('cliente'));
     }
 
     /**
