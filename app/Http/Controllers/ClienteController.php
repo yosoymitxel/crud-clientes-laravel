@@ -57,6 +57,14 @@ class ClienteController extends Controller
         return Inertia::render('Clientes/Show', compact('cliente'));
     }
 
+    public function createapi()
+    {
+        $cliente = Cliente::get();
+
+        //return view('cliente.show', compact('cliente'));
+        return Inertia::render('Clientes/Show', compact('cliente'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

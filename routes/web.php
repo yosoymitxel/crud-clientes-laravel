@@ -32,6 +32,8 @@ Route::middleware([
 
     // Clientes
     Route::resource('clientes', ClienteController::class);
+    // SubRutas
+    Route::get('/get-new-with-api', [ClienteController::class, 'createapi'])->name('clientes.createapi');
 
     // Dirección
     Route::resource('addresses', AddressController::class);
