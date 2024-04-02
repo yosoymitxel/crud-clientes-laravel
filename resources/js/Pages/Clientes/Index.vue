@@ -6,7 +6,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Clientes
+                Costumers
             </h2>
         </template>
 
@@ -17,7 +17,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                     <div class="card-body bg-white">
                         <div class="card-header flex justify-between items-center mb-4">
                             <div class="float-left">
-                                <h2 class="text-2xl font-bold" >Informe Cliente</h2>
+                                <h2 class="text-2xl font-bold" >Costumers</h2>
                             </div>
                             <div class="float-right">
                                 <a class="bg-green-500 text-white rounded-md shadow-md p-2 text-sm font-medium mr-4" :href="route('clientes.createapi')">

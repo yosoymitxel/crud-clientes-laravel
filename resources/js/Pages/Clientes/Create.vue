@@ -6,7 +6,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Nuevo Cliente
+                New Costumer
             </h2>
         </template>
 
@@ -20,7 +20,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     <form @submit="onSubmit" method="POST" class="flex flex-col gap-4">
                                         <div class="card-header flex justify-between items-center mb-4">
                                             <div class="float-left">
-                                                <h2 class="text-2xl font-bold">Crear Cliente</h2>
+                                                <h2 class="text-2xl font-bold">New Costumer</h2>
                                             </div>
                                             <div class="float-right">
                                                 <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
@@ -29,22 +29,22 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="name" class="font-medium">Nombre:</label>
+                                            <label for="name" class="font-medium">Name:</label>
                                             <input type="text" name="name" id="name" v-model="cliente.name" required class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="username" class="font-medium">Nombre de usuario:</label>
+                                            <label for="username" class="font-medium">Username:</label>
                                             <input type="text" name="username" id="username" v-model="cliente.username" required class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="email" class="font-medium">Correo electrónico:</label>
+                                            <label for="email" class="font-medium">Email:</label>
                                             <input type="email" name="email" id="email" v-model="cliente.email" required class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="phone" class="font-medium">Teléfono:</label>
+                                            <label for="phone" class="font-medium">Phone:</label>
                                             <input type="text" name="phone" id="phone" v-model="cliente.phone" required class="border border-gray-300 rounded-md p-2">
                                         </div>
 
@@ -53,7 +53,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                             <input type="text" name="website" id="website" v-model="cliente.website" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
-                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Agregar</button>
+                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Save</button>
                                     </form>
                                 </div>
 

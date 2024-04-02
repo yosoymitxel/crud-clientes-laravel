@@ -61,6 +61,13 @@ class ClienteController extends Controller
 
         if($addressData){
             $addressData['cliente_id'] = $cliente->id;
+
+            if(isset($addressData['geo']) && $addressData['geo']){
+                $addressData['lat'] = $addressData['geo']['lat'];
+                $addressData['lng'] = $addressData['geo']['lat'];
+                unset($addressData['geo']);
+            }
+
             $datosCliente['address'] = Address::create($addressData); // Create Address
         }
 
