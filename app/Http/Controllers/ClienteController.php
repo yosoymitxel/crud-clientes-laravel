@@ -36,6 +36,9 @@ class ClienteController extends Controller
     public function create()
     {
         $cliente = new Cliente();
+        $cliente->company = new \App\Models\Company; // Replace with your company model path
+        $cliente->address = new \App\Models\Address; // Replace with your company model path
+
         return Inertia::render('Clientes/Create', compact('cliente'));
         //return view('cliente.create', compact('cliente'));
     }
@@ -76,8 +79,8 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
-        $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->get();
+        $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->first();
+        $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->first();
 
         return Inertia::render('Clientes/Edit', compact('cliente'));
         //return view('cliente.edit', compact('cliente'));

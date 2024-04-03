@@ -49,10 +49,44 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="website" class="font-medium">Sitio web:</label>
+                                            <label for="website" class="font-medium">Web:</label>
                                             <input type="text" name="website" id="website" v-model="cliente.website" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
+                                        <div class="flex flex-col gap-2">
+                                            <label for="company-name" class="font-medium">Nombre de la compañía:</label>
+                                            <input type="text" name="company.name" id="company-name" v-model="company.name" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="company-catchPhrase" class="font-medium">Lema de la compañía:</label>
+                                            <input type="text" name="company.catchPhrase" id="company-catchPhrase" v-model="company.catchPhrase" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="company-bs" class="font-medium">Descripción de la compañía:</label>
+                                            <input type="text" name="company.bs" id="company-bs" v-model="company.bs" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="street" class="font-medium">Calle:</label>
+                                            <input type="text" name="address.street" id="street" v-model="address.street" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="suite" class="font-medium">Suite (opcional):</label>
+                                            <input type="text" name="address.suite" id="suite" v-model="address.suite" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="city" class="font-medium">Ciudad:</label>
+                                            <input type="text" name="address.city" id="city" v-model="address.city" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="zipcode" class="font-medium">Código postal:</label>
+                                            <input type="text" name="address.zipcode" id="zipcode" v-model="address.zipcode" class="border border-gray-300 rounded-md p-2">
+                                        </div>
                                         <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Save</button>
                                     </form>
                                 </div>
@@ -107,6 +141,17 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                     phone: '',
                     website: '',
                 },
+                company: {
+                    name: '',
+                    catchPhrase: '',
+                    bs: '',
+                },
+                address: {
+                    street: '',
+                    suite: '',
+                    city: '',
+                    zipcode: '',
+                },
                 showComponent: false,
                 mensajeModal: '',
                 tituloModal: ''
@@ -137,6 +182,22 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                             email: this.cliente.email,
                             phone: this.cliente.phone,
                             website: this.cliente.website,
+                            company: {  // Add company data here
+                                name: this.company.name,  // Assuming company data is in cliente.company
+                                catchPhrase: this.company.catchPhrase,
+                                bs: this.company.bs,
+                            },
+                            address: {   // Add address data here
+                                street: this.address.street,
+                                suite: this.address.suite,
+                                city: this.address.city,
+                                zipcode: this.address.zipcode,
+                                // Add optional geo data if available:
+                                geo: {
+                                    lat: this.address.lat,
+                                    lng: this.address.lng,
+                                },
+                            },
                         })
                         .then((response) => {
                             // Validate response as JSON

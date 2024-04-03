@@ -100,7 +100,32 @@ class ClienteController extends Controller
         }
 
         $cliente = Cliente::findOrFail($id);
-        $cliente->update($request->all());
+
+        $cliente->name = $request->input('cliente.name');
+        $cliente->username = $request->input('cliente.username');
+        $cliente->email = $request->input('cliente.email');
+        $cliente->phone = $request->input('cliente.phone');
+        $cliente->website = $request->input('cliente.website');
+
+        $cliente->save();
+
+        $company = Company::where('cliente_id', $id)->first();
+
+        $company->name = $request->input('company.name');
+        $company->catchPhrase = $request->input('company.catchPhrase');
+        $company->bs = $request->input('company.bs');
+
+        $company->save();
+
+        $address = Address::where('cliente_id', $id)->first();
+
+        $address->street = $request->input('address.street');
+        $address->suite = $request->input('address.suite');
+        $address->city = $request->input('address.city');
+        $address->zipcode = $request->input('address.zipcode');
+
+        $address->save();
+
         return response()->json($cliente);
     }
 

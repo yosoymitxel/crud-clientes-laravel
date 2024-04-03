@@ -56,6 +56,42 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                             <input type="text" name="website" id="website" v-model="cliente.website" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
+                                        <div class="flex flex-col gap-2">
+                                            <label for="company-name" class="font-medium">Nombre de la compañía:</label>
+                                            <input type="text" name="company.name" id="company-name" v-model="cliente.company.name" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="company-catchPhrase" class="font-medium">Lema de la compañía:</label>
+                                            <input type="text" name="company.catchPhrase" id="company-catchPhrase" v-model="cliente.company.catchPhrase" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="company-bs" class="font-medium">Descripción de la compañía:</label>
+                                            <input type="text" name="company.bs" id="company-bs" v-model="cliente.company.bs" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="street" class="font-medium">Calle:</label>
+                                            <input type="text" name="address.street" id="street" v-model="cliente.address.street" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="suite" class="font-medium">Suite (opcional):</label>
+                                            <input type="text" name="address.suite" id="suite" v-model="cliente.address.suite" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="city" class="font-medium">Ciudad:</label>
+                                            <input type="text" name="address.city" id="city" v-model="cliente.address.city" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+                                        <div class="flex flex-col gap-2">
+                                            <label for="zipcode" class="font-medium">Código postal:</label>
+                                            <input type="text" name="address.zipcode" id="zipcode" v-model="cliente.address.zipcode" class="border border-gray-300 rounded-md p-2">
+                                        </div>
+
+
                                         <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Actualizar</button>
                                     </form>
                                 </div>
@@ -122,15 +158,28 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 // Actualizar la lista de clientes localmente
                 // ...
                 let id = this.cliente.id;
-                console.log(this.$router)
+                console.log(this.cliente)
                 try{
                     const response =  axios.put(`${window.location.href.split("//")[0]}/api/clientes/${ id }`,
                         {
-                            name: this.cliente.name,
-                            username: this.cliente.username,
-                            email: this.cliente.email,
-                            phone: this.cliente.phone,
-                            website: this.cliente.website,
+                            cliente: {
+                                name: this.cliente.name,
+                                username: this.cliente.username,
+                                email: this.cliente.email,
+                                phone: this.cliente.phone,
+                                website: this.cliente.website,
+                            },
+                            company: {
+                                name: this.cliente.company.name,
+                                catchPhrase: this.cliente.company.catchPhrase,
+                                bs: this.cliente.company.bs,
+                            },
+                            address: {
+                                street: this.cliente.address.street,
+                                suite: this.cliente.address.suite,
+                                city: this.cliente.address.city,
+                                zipcode: this.cliente.address.zipcode,
+                            },
                         })
                         .then((response) => {
                             // Validate response as JSON
