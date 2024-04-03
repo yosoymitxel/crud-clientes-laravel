@@ -6,7 +6,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     <AppLayout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Detalle de un Cliente
+                Update Costumer Details
             </h2>
         </template>
 
@@ -16,15 +16,11 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-
-
                                 <div class="row padding-1 p-1">
-
                                     <form @submit="onSubmit" method="POST" class="flex flex-col gap-4">
                                         <div class="card-header flex justify-between items-center mb-4">
                                             <div class="float-left">
-                                                <h2 class="text-2xl font-bold">{{ ('Modificar datos del Cliente No: '+cliente.id) }}</h2>
-
+                                                <h2 class="text-2xl font-bold">{{ ('Update Costumer No: '+cliente.id) }}</h2>
                                             </div>
                                             <div class="float-right">
                                                 <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
@@ -32,68 +28,73 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="name" class="font-medium">Nombre:</label>
+                                            <label for="name" class="font-medium">Name:</label>
                                             <input type="text" name="name" id="name" v-model="cliente.name" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="username" class="font-medium">Nombre de usuario:</label>
+                                            <label for="username" class="font-medium">Username:</label>
                                             <input type="text" name="username" id="username" v-model="cliente.username" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="email" class="font-medium">Correo electrónico:</label>
+                                            <label for="email" class="font-medium">Email:</label>
                                             <input type="email" name="email" id="email" v-model="cliente.email" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="phone" class="font-medium">Teléfono:</label>
+                                            <label for="phone" class="font-medium">Phone:</label>
                                             <input type="text" name="phone" id="phone" v-model="cliente.phone" required class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="website" class="font-medium">Sitio web:</label>
+                                            <label for="website" class="font-medium">Website:</label>
                                             <input type="text" name="website" id="website" v-model="cliente.website" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
-
+                                        <div class="my-4">
+                                            <h2 class="text-xl font-bold">{{ ('Company Details') }}</h2>
+                                            <hr>
+                                        </div>
                                         <div class="flex flex-col gap-2">
-                                            <label for="company-name" class="font-medium">Nombre de la compañía:</label>
+                                            <label for="company-name" class="font-medium">Company Name:</label>
                                             <input type="text" name="company.name" id="company-name" v-model="cliente.company.name" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="company-catchPhrase" class="font-medium">Lema de la compañía:</label>
+                                            <label for="company-catchPhrase" class="font-medium">Company Slogan:</label>
                                             <input type="text" name="company.catchPhrase" id="company-catchPhrase" v-model="cliente.company.catchPhrase" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="company-bs" class="font-medium">Descripción de la compañía:</label>
+                                            <label for="company-bs" class="font-medium">Company Description:</label>
                                             <input type="text" name="company.bs" id="company-bs" v-model="cliente.company.bs" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
-
+                                        <div class="my-4">
+                                            <h2 class="text-xl font-bold">{{ ('Address Details') }}</h2>
+                                            <hr>
+                                        </div>
                                         <div class="flex flex-col gap-2">
-                                            <label for="street" class="font-medium">Calle:</label>
+                                            <label for="street" class="font-medium">Street:</label>
                                             <input type="text" name="address.street" id="street" v-model="cliente.address.street" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="suite" class="font-medium">Suite (opcional):</label>
+                                            <label for="suite" class="font-medium">Suite (optional):</label>
                                             <input type="text" name="address.suite" id="suite" v-model="cliente.address.suite" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
-                                            <label for="city" class="font-medium">Ciudad:</label>
+                                            <label for="city" class="font-medium">City:</label>
                                             <input type="text" name="address.city" id="city" v-model="cliente.address.city" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
-
                                         <div class="flex flex-col gap-2">
-                                            <label for="zipcode" class="font-medium">Código postal:</label>
+                                            <label for="zipcode" class="font-medium">Zip Code:</label>
                                             <input type="text" name="address.zipcode" id="zipcode" v-model="cliente.address.zipcode" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
+                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Update</button>
 
-                                        <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Actualizar</button>
                                     </form>
                                 </div>
                             </div>
