@@ -76,7 +76,7 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Cliente::findOrFail($id);
 
         $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->first();
         $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->first();
