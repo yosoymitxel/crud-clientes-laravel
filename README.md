@@ -49,4 +49,4 @@ Este proyecto es un ejemplo y puede ser modificado y ampliado según tus necesid
 
 ### Links
 
-* **Repositorio GitHub:** [se quitó una URL no válida]
+* **Repositorio GitHub:** [https://github.com/yosoymitxel/crud-clientes-laravel](https://github.com/yosoymitxel/crud-clientes-laravel)
