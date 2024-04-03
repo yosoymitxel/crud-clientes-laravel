@@ -22,7 +22,6 @@ class ClienteController extends Controller
         $clientes = Cliente::get();
 
         foreach ($clientes as &$cliente) {
-            $cliente->idxd = $cliente->id;
             $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->get();
             $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
         }

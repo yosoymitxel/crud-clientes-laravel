@@ -167,6 +167,20 @@ class ClienteController extends Controller
     public function destroy(string $id)
     {
         $cliente = Cliente::findOrFail($id);
+
+        $cliente->address = Address::where('cliente_id',  (int)$cliente->id)->get();
+        $cliente->company = Company::where('cliente_id',  (int)$cliente->id)->get();
+
+        // Eliminar companies asociadas
+        foreach ($cliente->companies as $company) {
+            $company->delete();
+        }
+
+        // Eliminar addresses asociadas
+        foreach ($cliente->addresses as $address) {
+            $address->delete();
+        }
+
         $cliente->delete();
         return response()->json(null, 204);
     }

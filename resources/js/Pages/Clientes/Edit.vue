@@ -23,6 +23,9 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                                 <h2 class="text-2xl font-bold">{{ ('Update Costumer No: '+cliente.id) }}</h2>
                                             </div>
                                             <div class="float-right">
+                                                <a href="#" class="btn btn-danger btn-sm mr-2" @click="handleDelete">
+                                                    {{ ('Delete') }}
+                                                </a>
                                                 <a class="btn btn-primary btn-sm" :href="route('clientes.index')"> {{ ('Back') }}</a>
                                             </div>
                                         </div>
@@ -131,8 +134,6 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 </template>
 <script>
 
-
-
     export default {
         components: {
             AppLayout
@@ -160,13 +161,6 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 // ...
                 let id = this.cliente.id;
                 console.log(this.cliente)
-
-                if (!this.validate()) {
-                    this.mensajeModal =  'Error Validate'
-                    this. tituloModal = 'Invalid datas.'
-                    this.showComponent = true;
-                    return; // Exit if validation fails
-                }
 
                 try{
                     const response =  axios.put(`${window.location.href.split("//")[0]}/api/clientes/${ id }`,
@@ -246,12 +240,36 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             handleCloseClick() {
                 this.showComponent = false;
             },
-            validate() {
-                this.errors = {}; // Clear previous errors
+            async handleDelete() {
+                const confirmation = await Swal.fire({
+                    title: `Delete Customer ${this.cliente.name}?`,
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonText: 'No',
+                });
 
-                    // Validation successful
-                    return true;
+                if (confirmation.isConfirmed) {
+                    try {
+                        // Make the API call to delete the customer using the ID
+                        const response = await axios.delete(`/api/clientes/${this.cliente.id}`);
+
+                        // Handle successful deletion (e.g., display success message, redirect)
+                        console.log('Customer deleted successfully:', response);
+                        // ... your success logic here ...
+
+                        this.tituloModal =  'OK'
+                        this.mensajeModal  = 'Customer deleted successfully'
+                        this.showComponent = true;
+
+                    } catch (error) {
+                        console.error('Error deleting customer:', error);
+                        // Handle errors gracefully (e.g., display error message)
+                        Swal.fire('Error', 'An error occurred while deleting the customer.', 'error');
+                    }
+                }
             },
+
         }
 
     }
