@@ -28,7 +28,7 @@ Este proyecto es un CRUD completo de clientes, con funcionalidades para gestiona
 
 ### Instalación:
 
-1. Clonar el proyecto: ```git clone https://github.com/tu-usuario/crud-clientes.git```
+1. Clonar el proyecto: ```https://github.com/yosoymitxel/crud-clientes-laravel```
 2. Instalar las dependencias de Laravel: ```composer install```
 3. Instalar las dependencias de Vue.js y Node.js: ```npm install``` o ```yarn install```
 4. Compilar los assets de Vue.js: ```npm run dev``` o ```yarn run dev```
