@@ -43,12 +43,10 @@
 
 
 
-/* Base classes */
 .btn {
-    @apply inline-flex items-center px-4 py-1 font-medium text-center text-white rounded-full;
+    @apply inline-flex items-center px-4 py-1 font-medium text-center text-white rounded-full  ease-linear transition-all duration-150;
 }
 
-/* Color classes */
 .btn.btn-primary {
     @apply bg-blue-500 hover:bg-blue-700;
 }
@@ -73,3 +71,12 @@
 .btn i {
     @apply mr-2;
 }
+
+h2.text-xl{
+    @apply text-green-700;
+}
+
+h2.text-2xl{
+    @apply text-green-900;
+}
+

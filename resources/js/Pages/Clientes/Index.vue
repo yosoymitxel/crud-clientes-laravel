@@ -20,10 +20,10 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                 <h2 class="text-2xl font-bold" >Costumers</h2>
                             </div>
                             <div class="float-right">
-                                <a class="bg-green-500 text-white rounded-md shadow-md p-2 text-sm font-medium mr-4" :href="route('clientes.createapi')">
+                                <a class="btn btn-success mr-4" :href="route('clientes.createapi')">
                                     Get From API
                                 </a>
-                                <a class="bg-blue-500 text-white rounded-md shadow-md p-2 text-sm font-medium" :href="route('clientes.create')">
+                                <a class="btn btn-primary" :href="route('clientes.create')">
                                     New
                                 </a>
                             </div>
