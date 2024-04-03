@@ -76,6 +76,8 @@ function handleImageError() {
                                         <h2 class="text-2xl font-bold mb-4">Instalación</h2>
                                         <ol class="list-decimal pl-4">
                                             <li>Clonar el proyecto: <code>git clone https://github.com/yosoymitxel/crud-clientes-laravel</code></li>
+                                            <li>Configurar las conexiones dentro del archivo .env</li>
+                                            <li>Migrar base de datos <code>php artisan migrate --seed</code></li>
                                             <li>Instalar las dependencias de Laravel: <code>composer install</code></li>
                                             <li>Instalar las dependencias de Vue.js y Node.js: <code>npm install</code> o <code>yarn install</code></li>
                                             <li>Compilar los assets de Vue.js: <code>npm run dev</code> o <code>yarn run dev</code></li>
