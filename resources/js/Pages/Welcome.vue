@@ -101,7 +101,7 @@ function handleImageError() {
                                 </div>
                             </div>
 
-                            <div id="contenedor-login" class="">
+                            <div id="contenedor-login" class="" v-if="!isAuthenticated">
                                 <div class="text-center flex ">
                                     <a :href="route('login')" class="py-5 bg-green-500 text-white w-1/2">
                                         Login
@@ -117,4 +117,15 @@ function handleImageError() {
             </div>
         </div>
     </main>
+    <footer class="bg-green-800 text-white  mt-10">
+        <div class="container mx-auto flex flex-col items-center py-8">
+            <p class="mb-4">Creado por</p>
+            <p class="mb-4" > <a href="https://github.com/yosoymitxel" target="_blank" class="text-green-50"><i class="fab fa-github"></i>
+                Yosoymitxel</a></p>
+            <p >Repositorio: <a href="https://github.com/yosoymitxel/crud-clientes-laravel" target="_blank" class="text-green-50">Crud Clientes Laravel</a></p>
+        </div>
+        <div class="p-2 bg-green-900 text-center">
+            <p>&copy; {{ new Date().getFullYear() }} Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </template>

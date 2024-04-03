@@ -53,13 +53,14 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                     </div>
                                     <div class="text-center">
                                         <h2 class="text-2xl font-bold mb-6">Details</h2>
-                                        <table class="w-full" >
+                                        <table class="w-full table table-responsive" >
                                             <thead>
                                             <tr>
                                                 <th>City</th>
                                                 <th>Street</th>
                                                 <th>Suite</th>
                                                 <th>Company</th>
+                                                <th>Map</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -67,9 +68,14 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                                 <td>{{ address.city }}</td>
                                                 <td>{{ address.street }}</td>
                                                 <td>{{ address.suite }}</td>
-                                                <div v-for="company in cliente.company" :key="company.id">
-                                                    <td>{{ company.name }}</td>
-                                                </div>
+                                                <td v-for="company in cliente.company" :key="company.id">
+                                                    <span>{{ company.name }}</span>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <iframe class="iframe" :src="getMapUrl(address.lat,address.lng)"  width="600" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -106,6 +112,9 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             },
             isShowDetails(cliente, type = 'address') {
                 return this.expandedDetails[cliente.id] && this.expandedDetails[cliente.id][type];
+            },
+            getMapUrl(lat,lng) {
+                return `https://maps.google.com/?ll=${lat},${lng}&z=3&t=m&output=embed`;
             },
         },
     }

@@ -64,7 +64,7 @@ class ClienteController extends Controller
 
             if(isset($addressData['geo']) && $addressData['geo']){
                 $addressData['lat'] = $addressData['geo']['lat'];
-                $addressData['lng'] = $addressData['geo']['lat'];
+                $addressData['lng'] = $addressData['geo']['lng'];
                 unset($addressData['geo']);
             }
 

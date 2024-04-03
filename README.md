@@ -1,4 +1,4 @@
-## CRUD de Clientes con Compañías y Direcciones
+## CRUD de Clientes 
 
 ### Descripción:
 
