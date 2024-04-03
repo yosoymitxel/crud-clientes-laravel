@@ -33,17 +33,17 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 
                                         <div class="flex flex-col gap-2">
                                             <label for="name" class="font-medium">Nombre:</label>
-                                            <input type="text" name="name" id="name" v-model="cliente.name" required class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="name" id="name" v-model="cliente.name" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="username" class="font-medium">Nombre de usuario:</label>
-                                            <input type="text" name="username" id="username" v-model="cliente.username" required class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="username" id="username" v-model="cliente.username" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="email" class="font-medium">Correo electrónico:</label>
-                                            <input type="email" name="email" id="email" v-model="cliente.email" required class="border border-gray-300 rounded-md p-2">
+                                            <input type="email" name="email" id="email" v-model="cliente.email" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
@@ -53,49 +53,49 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 
                                         <div class="flex flex-col gap-2">
                                             <label for="website" class="font-medium">Sitio web:</label>
-                                            <input type="text" name="website" id="website" v-model="cliente.website" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="website" id="website" v-model="cliente.website" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="company-name" class="font-medium">Nombre de la compañía:</label>
-                                            <input type="text" name="company.name" id="company-name" v-model="cliente.company.name" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="company.name" id="company-name" v-model="cliente.company.name" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="company-catchPhrase" class="font-medium">Lema de la compañía:</label>
-                                            <input type="text" name="company.catchPhrase" id="company-catchPhrase" v-model="cliente.company.catchPhrase" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="company.catchPhrase" id="company-catchPhrase" v-model="cliente.company.catchPhrase" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="company-bs" class="font-medium">Descripción de la compañía:</label>
-                                            <input type="text" name="company.bs" id="company-bs" v-model="cliente.company.bs" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="company.bs" id="company-bs" v-model="cliente.company.bs" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="street" class="font-medium">Calle:</label>
-                                            <input type="text" name="address.street" id="street" v-model="cliente.address.street" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="address.street" id="street" v-model="cliente.address.street" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="suite" class="font-medium">Suite (opcional):</label>
-                                            <input type="text" name="address.suite" id="suite" v-model="cliente.address.suite" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="address.suite" id="suite" v-model="cliente.address.suite" maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
                                         <div class="flex flex-col gap-2">
                                             <label for="city" class="font-medium">Ciudad:</label>
-                                            <input type="text" name="address.city" id="city" v-model="cliente.address.city" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="address.city" id="city" v-model="cliente.address.city" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
+
 
                                         <div class="flex flex-col gap-2">
                                             <label for="zipcode" class="font-medium">Código postal:</label>
-                                            <input type="text" name="address.zipcode" id="zipcode" v-model="cliente.address.zipcode" class="border border-gray-300 rounded-md p-2">
+                                            <input type="text" name="address.zipcode" id="zipcode" v-model="cliente.address.zipcode" required maxlength="255" class="border border-gray-300 rounded-md p-2">
                                         </div>
 
 
                                         <button type="submit" class="bg-blue-500 text-white rounded-md p-2 font-medium">Actualizar</button>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -159,6 +159,14 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                 // ...
                 let id = this.cliente.id;
                 console.log(this.cliente)
+
+                if (!this.validate()) {
+                    this.mensajeModal =  'Error Validate'
+                    this. tituloModal = 'Invalid datas.'
+                    this.showComponent = true;
+                    return; // Exit if validation fails
+                }
+
                 try{
                     const response =  axios.put(`${window.location.href.split("//")[0]}/api/clientes/${ id }`,
                         {
@@ -237,7 +245,12 @@ import AppLayout from '@/Layouts/AppLayout.vue';
             handleCloseClick() {
                 this.showComponent = false;
             },
+            validate() {
+                this.errors = {}; // Clear previous errors
 
+                    // Validation successful
+                    return true;
+            },
         }
 
     }

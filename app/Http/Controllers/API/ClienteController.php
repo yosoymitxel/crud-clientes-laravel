@@ -32,6 +32,22 @@ class ClienteController extends Controller
             'email' => 'required|string|email|unique:clientes|max:255',
             'phone' => 'string|nullable',
             'website' => 'string|nullable',
+
+            // Address validation rules
+            'address.street' => 'required|string|max:255',
+            'address.suite' => 'nullable|string|max:255',
+            'address.city' => 'required|string|max:255',
+            'address.zipcode' => 'required|string|max:255',
+
+            // Optional validation for geo data (if required)
+            'address.lat' => 'nullable|numeric|between:-90,90',  // Latitude range
+            'address.lng' => 'nullable|numeric|between:-180,180', // Longitude range
+
+            // Company validation rules
+            'company.name' => 'nullable|string|max:255',
+            'company.catchPhrase' => 'nullable|string|max:255',
+            'company.bs' => 'nullable|string|max:255',
+
         ]);
 
         if ($validator->fails()) {
@@ -93,6 +109,22 @@ class ClienteController extends Controller
             'email' => 'string|email|unique:clientes,email,' . $id . '|max:255',
             'phone' => 'string|nullable',
             'website' => 'string|nullable',
+
+            // Address validation rules
+            'address.street' => 'required|string|max:255',
+            'address.suite' => 'nullable|string|max:255',
+            'address.city' => 'required|string|max:255',
+            'address.zipcode' => 'required|string|max:255',
+
+            // Optional validation for geo data (if required)
+            'address.lat' => 'nullable|numeric|between:-90,90',  // Latitude range
+            'address.lng' => 'nullable|numeric|between:-180,180', // Longitude range
+
+            // Company validation rules
+            'company.name' => 'nullable|string|max:255',
+            'company.catchPhrase' => 'nullable|string|max:255',
+            'company.bs' => 'nullable|string|max:255',
+
         ]);
 
         if ($validator->fails()) {

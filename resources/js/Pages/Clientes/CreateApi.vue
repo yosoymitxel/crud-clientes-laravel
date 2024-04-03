@@ -76,7 +76,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                             // Process is finished
                             Swal.fire({
                                 title: "Procesado",
-                                text: `Finished processing users. Successfully inserted ${successfulInsertions} users.`,
+                                text: `Finished processing users. Successfully inserted ${successfulInsertions} costumers.`,
                                 icon: "question"
                             });
                             if (errors.length > 0) {
