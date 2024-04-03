@@ -232,7 +232,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                                 console.log('Se ha modificado')
 
                                 this.tituloModal =  statusText
-                                this.mensajeModal  = 'Se ha modificado correctamente'
+                                this.mensajeModal  = 'Costumer was created'
                             } else {
                                 // Error handling for non-2xx status codes
                                 this.tituloModal =  statusText
